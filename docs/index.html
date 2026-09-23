@@ -3,248 +3,196 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="Inner City Club Football (ICCF) is a community football club in Highfields, Leicester, providing coaching and competitive football for 5-16 year olds since 2003.">
     <title>ICCF Leicester | Inner City Club Football</title>
-	<!-- core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
     <link rel="shortcut icon" href="images/ico/favicon.jpg">
 </head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-<body id="home">
-    <header id="header">
-        <nav id="main-nav" class="navbar navbar-default navbar-fixed-top" role="banner">
+    <header class="site-header">
+        <div class="container site-header__bar" data-dropdown-container>
+            <a class="brand" href="index.html">
+                <img class="brand__logo" src="images/logo/ICCF-Logo.jpg" alt="Inner City Club Football crest">
+                <span>Inner City Club Football</span>
+            </a>
+
+            <button type="button" class="nav-toggle" data-disclosure data-dropdown aria-controls="primary-nav" aria-expanded="false">
+                <span class="visually-hidden">Menu</span>
+                <svg class="nav-toggle__icon icon-open" viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                <svg class="nav-toggle__icon icon-close" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="4" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="20" y1="4" x2="4" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+
+            <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+                <ul class="primary-nav__list">
+                    <li><a href="index.html" aria-current="page">Home</a></li>
+                    <li class="has-dropdown" data-dropdown-container>
+                        <button type="button" class="dropdown-toggle" data-disclosure data-dropdown aria-controls="about-menu" aria-haspopup="true" aria-expanded="false">
+                            About
+                            <svg class="dropdown-toggle__caret" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1l5 6 5-6z"/></svg>
+                        </button>
+                        <ul id="about-menu" class="dropdown-menu">
+                            <li><a href="InnerCityClubFootballAboutUs.html">About Us</a></li>
+                            <li><a href="index.html#location">Where To Find Us</a></li>
+                            <li><a href="InnerCityClubFootballPolicies.html">Policies</a></li>
+                            <li><a href="InnerCityClubFootballSafeguarding.html">Safeguarding</a></li>
+                            <li><a href="InnerCityClubFootballCOVID19.html">COVID-19 Guidelines</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="InnerCityClubFootballContactUs.html">Contact Us</a></li>
+                </ul>
+                <a class="button button--gold nav-cta" href="https://forms.gle/AihbV1LUdqex3pQM6">Join Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="hero">
             <div class="container">
-                <div class="navbar-header">
-                  <nav id="main-nav" class="navbar navbar-default navbar-fixed-top" role="banner">
-                    <div class="container">
-                        <div class="navbar-header">
-                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                              <span class="sr-only">Toggle navigation</span>
-                              <span class="icon-bar"></span>
-                              <span class="icon-bar"></span>
-                              <span class="icon-bar"></span>
-                          </button>
+                <img class="hero__crest" src="images/logo/ICCF-Logo.jpg" alt="Inner City Club Football crest">
+                <h1>Inner City Club Football</h1>
+                <p class="hero__lede">A community organisation based in the heart of Leicester, successfully serving the community since 2003.</p>
+                <div class="hero__actions">
+                    <a class="button button--gold" href="https://forms.gle/AihbV1LUdqex3pQM6">Join Us</a>
+                    <a class="button button--outline" href="InnerCityClubFootballAboutUs.html">About the club</a>
                 </div>
+            </div>
+        </section>
 
-                <div class="collapse navbar-collapse navbar-right" >
-                    <ul class="nav navbar-nav">
-                        <li class="scroll active"><a href="#home">Home</a></li>
-                         <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropbtn">Club</a>
-                        <div class="dropdown-content">
-                          <a href="InnerCityClubFootballAboutUs.html">About Us</a>
-                          <a href="index.html#location">Where To Find Us</a>
-                          <a href="InnerCityClubFootballPolicies.html">Policies</a>
-                          <a href="InnerCityClubFootballSafeguarding.html">Safeguarding</a>
-                        </div>
-                        <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropbtn">Join Us</a>
-                        <div class="dropdown-content">
-                          <a href="https://forms.gle/mhc2Lav9bqAPwsWMA">Online Registration Form</a>
-                        </div>
-                        <li class="scroll"><a href="InnerCityClubFootballContactUs.html">Contact Us</a></li>
+        <section class="section" id="about-us">
+            <div class="container split">
+                <div class="split__media">
+                    <img src="images/banner/team.jpg" alt="ICCF players and coaches posing together as a team">
+                </div>
+                <div>
+                    <span class="eyebrow">About us</span>
+                    <h2>Football and community, together</h2>
+                    <p>A football and community organisation based in the heart of Leicester, Inner City Club Football (ICCF) has been successfully serving the community since the summer of 2003. Creating football opportunities for young people living in Highfields and neighbouring areas, ICCF aims to unify diversity across Leicester.</p>
+                    <p>ICCF is committed to providing quality coaching and education to build up 5&ndash;16-year-olds, with integrity and the ability to play football at a competitive level, through a modern, child-friendly approach to youth football.</p>
+                    <a class="button button--dark" href="InnerCityClubFootballAboutUs.html">Read more about us</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="location">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Visit us</span>
+                    <h2>Where to find us</h2>
+                </div>
+                <div class="split">
+                    <div class="address-card">
+                        <address>
+                            Madani Schools Federation<br>
+                            77 Evington Valley Rd<br>
+                            Leicester LE5 5LL
+                        </address>
+                        <p>Training sessions run for age groups between 5 and 16 years old &mdash; see our <a href="https://fulltime.thefa.com/home/club/6813725.html">League Fixtures</a> for match dates.</p>
+                    </div>
+                    <div class="embed-frame">
+                        <iframe title="Map showing Madani Schools Federation, 77 Evington Valley Road, Leicester" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2421.7728783414605!2d-1.101507448694145!3d52.62794833587727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48776144a6d94215%3A0x1accbe2059c72787!2sMadani%20Schools%20Federation!5e0!3m2!1sen!2suk!4v1672431046161!5m2!1sen!2suk" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Stay informed</span>
+                    <h2>Useful information</h2>
+                    <p>Links and resources for players, parents and coaches.</p>
+                </div>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card__icon-wrap"><img src="images/banner/LeicestershireFA.jpg" alt=""></div>
+                        <h3><a class="card__link" href="https://fulltime.thefa.com/home/club/6813725.html">League Fixtures</a></h3>
+                        <p>Follow ICCF's upcoming matches and results with the Leicestershire FA.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card__icon-wrap"><img src="images/banner/LeicestershireFA.jpg" alt=""></div>
+                        <h3><a class="card__link" href="http://www.leicestershirefa.com/">Leicestershire FA</a></h3>
+                        <p>Our County Football Association.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card__icon-wrap"><img src="images/banner/NSPCC.jpg" alt=""></div>
+                        <h3><a class="card__link" href="https://www.nspcc.org.uk/">NSPCC</a></h3>
+                        <p>Support and advice on keeping children safe.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card__icon-wrap"><img src="images/banner/CWO.png" alt=""></div>
+                        <h3><a class="card__link" href="InnerCityClubFootballSafeguarding.html#contact-welfare">Club Welfare Officer</a></h3>
+                        <p>Contact details for our Club Welfare Officer.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card__icon-wrap"><img src="images/banner/playingfootball.jpg" alt=""></div>
+                        <h3><a class="card__link" href="InnerCityClubFootballPolicies.html">Club Policies</a></h3>
+                        <p>Our code of conduct, constitution and safeguarding policies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="social">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Keep up to date</span>
+                    <h2>Social media updates</h2>
+                    <p>Follow ICCF on Facebook, Twitter and Instagram for the latest news, or view our page below.</p>
+                </div>
+                <div class="embed-frame" style="max-width: 420px;">
+                    <iframe title="Inner City Club Football Facebook page" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ficcfleicester&tabs=timeline&width=400&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" loading="lazy" allow="encrypted-media"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h2>Inner City Club Football</h2>
+                </div>
+                <div>
+                    <h2>Quick links</h2>
+                    <ul>
+                        <li><a href="InnerCityClubFootballAboutUs.html">About Us</a></li>
+                        <li><a href="InnerCityClubFootballPolicies.html">Policies</a></li>
+                        <li><a href="InnerCityClubFootballSafeguarding.html">Safeguarding</a></li>
+                        <li><a href="InnerCityClubFootballContactUs.html">Contact Us</a></li>
                     </ul>
                 </div>
-            </div><!--/.container-->
-        </nav><!--/nav-->
-    </header><!--/header-->
-
- <section id="logo">
-        <div class="container">
-        </div>
-</section>
-
-    <div class="section-header">
-                  <img class="img-responsive" src="images/logo/ICCF-Logo.jpg" alt="" style="width:25%">
-    </div>
-
-            </div>
-    </section><!--/#logo-->
-
-    <section id="missionstatment" >
-            <div class="container">
-
-                <div class="missionstatment">
-                    <p>Community organisation based in the heart of Leicester. Successfully serving the community since 2003.</p>
-                </div>
-            </div>
-        </section><!--/#missionstatment-->
-
-     <section id="about-us">
-        <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6 wow fadeInLeft">
-                          <img class="img-responsive-kids" src="images/banner/team.jpg" alt="" style="width:100%" opacity: 0.5>
-                        </div>
-
-                        <div class="col-sm-6 wow fadeInRight">
-                            <h3 class="column-title">About Us</h3>
-                            <p>A Football and Community organisation based in the heart of Leicester, Inner City Club Football (ICCF) has been successfully serving the community since the summer of 2003.<br>
-                            Creating football opportunities for young people living in Highfields and neighbouring areas, ICCF, aims to unify diversity across Leicester. <br>
-                            ICCF is committed in its endeavour to provide quality coaching and education to build up 5-16-year-olds, with integrity and the ability to play football at a competitive level. <br>
-                            Encouraging a modern, child-friendly approach to youth football, ICCF dedicates a challenging and learning mentality for children and young teens. Working together with a proactive attitude, Coaches at ICCF foster a learning environment for children that put their development needs at the centre. <br>
-                            ICCF has taken part in a range of matches and competitions nationwide. <p>
-                            <a href="InnerCityClubFootballAboutUs.html"><button class="button">Read More</button></a>
-                        </div>
-                    </div>
-                </div>
-    </section><!--/#about-us-->
-
-  <section id="location">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Where To Find Us</h2>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-6 wow fadeInRight">
-                  <p>Madani Schools Federation<br>77 Evington Valley Rd,<br>Leicester LE5 5LL</p>
-              </div>
-              <div class="fadeInRight">
-                <iframe width="500" height="300" id="gmap_canvas"
-
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2421.7728783414605!2d-1.101507448694145!3d52.62794833587727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48776144a6d94215%3A0x1accbe2059c72787!2sMadani%20Schools%20Federation!5e0!3m2!1sen!2suk!4v1672431046161!5m2!1sen!2suk"
-                frameborder="0"
-                scrolling="no"
-                marginheight="0"
-                marginwidth="0">
-              </iframe>
-              </div>
-            </div>
-        </div>
-    </section><!--/#location-->
-
-    <section id="whats-happening">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title wow fadeInDown">What's Happening</h2>
-            </div>
-            <div class="row text-center">
-
-              <div class="col-md-1 col-sm-6 col-xs-12">
-
-              </div>
-              <div class="col-md-1 col-sm-6 col-xs-12">
-
-              </div>
-              <div class="col-md-1 col-sm-6 col-xs-12">
-
-              </div>
-              <div class="col-md-1 col-sm-6 col-xs-12">
-
-              </div>
-              <div class="col-md-1 col-sm-6 col-xs-12">
-
-              </div>
-                <div class="col-md-2 col-sm-6 col-xs-12">
-                    <div>
-                        <div><img class="img-responsive" src="images/banner/LeicestershireFA.jpg" alt="Leicester FA" style="width:55%"></div>
-                        <br><strong><a href="https://fulltime.thefa.com/home/club/6813725.html">League Fixtures</a></strong>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-6 col-xs-12">
-
-                </div>
-                <div class="col-md-1 col-sm-6 col-xs-12">
-
-                </div>
-                </div>
-            </div>
-        </div>
-    </section><!--/#useful-information-->
-
-    <section id="useful-information2">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title wow fadeInDown">Useful Information</h2>
-            </div>
-            <div class="row text-center">
-              <div class="col-md-1 col-sm-6 col-xs-12">
-
-              </div>
-              <div class="col-md-1 col-sm-6 col-xs-12">
-
-              </div>
-              
-                <div class="col-md-2 col-sm-6 col-xs-12">
-                    <div>
-                      <a href="http://www.leicestershirefa.com/">
-                        <div><img class="img-responsive" src="images/banner/LeicestershireFA.jpg" alt="Leicester FA" style="width:48%"></div>
-                        <br><strong href="http://www.leicestershirefa.com/">Leicestershire FA</strong>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-6 col-xs-12">
-                    <div>
-                      <a href="https://www.nspcc.org.uk/">
-                        <div><img class="img-responsive" src="images/banner/NSPCC.jpg" alt="" style="width:75%"></div>
-                        <br><strong href="https://www.nspcc.org.uk/">NSPCC</strong>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-6 col-xs-12">
-                    <div>
-                      <a href="InnerCityClubFootballSafeguarding.html#contact-welfare">
-                        <div><img class="img-responsive" src="images/banner/CWO.png" alt="" style="width:55%"></div>
-                        <strong href="mailto:iccfleicester@gmail.com">Inner City Club Football Welfare Officer</strong>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-6 col-xs-12">
-                    <div>
-                      <a href="InnerCityClubFootballPolicies.html">
-                        <div><img class="img-responsive" src="images/banner/playingfootball.jpg" alt=""></div>
-                        <strong href="mailto:iccfleicester@gmail.com">Inner City Club Football Policies</strong>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
-    </section><!--/#useful-information-->
-
-    <section id="useful-information-social">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title wow fadeInDown">Social Media Updates</h2>
-            </div>
-            <div class="row text-center">
-             
-                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ficcfleicester&tabs=timeline&width=400&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
-                    width="400" height="400" style="border:none;" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-             
-            </div>
-        </div>
-    </section><!--/#useful-information-->
-
-    <footer id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    &copy; 2020 Inner City Club Football
-                </div>
-                <div class="col-sm-6">
-                    <ul class="social-icons">
-                        <li><a href="https://en-gb.facebook.com/iccfleicester/"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="https://twitter.com/iccfleicester"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="https://www.instagram.com/iccfleicester/"><i class="fa fa-instagram"></i></a></li>
+                <div>
+                    <h2>Follow us</h2>
+                    <ul class="social-links">
+                        <li>
+                            <a href="https://en-gb.facebook.com/iccfleicester/">
+                                <span class="visually-hidden">Facebook</span>
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/iccfleicester">
+                                <span class="visually-hidden">Twitter</span>
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.6 19.4 19 21 17.4 6.6 3 5 4.6ZM19 4.6 4.6 19 3 17.4 17.4 3 19 4.6Z"/></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/iccfleicester/">
+                                <span class="visually-hidden">Instagram</span>
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.3"/></svg>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
+            <div class="footer-bottom">
+                <p>&copy; 2003&ndash;2026 Inner City Club Football</p>
+            </div>
         </div>
-    </footer><!--/#footer-->
+    </footer>
 
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/mousescroll.js"></script>
-    <script src="js/smoothscroll.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/jquery.inview.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/custom-scripts.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
