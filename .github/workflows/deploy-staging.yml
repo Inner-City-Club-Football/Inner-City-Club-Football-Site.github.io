@@ -18,18 +18,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # `pages deploy` can't interactively prompt to create a missing
+      # project in CI, so create it first if it doesn't exist yet.
+      # continue-on-error lets this step fail harmlessly once the project
+      # already exists (Wrangler errors on trying to create a duplicate).
+      - name: Ensure Cloudflare Pages project exists
+        continue-on-error: true
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages project create iccf-leicester --production-branch=main
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          # `pages deploy` can't interactively prompt to create a missing
-          # project in CI, so create it first if it doesn't exist yet
-          # (the `|| true` makes this a no-op once the project exists).
           # A fixed --branch label (not the actual source branch) so every
           # manual staging run lands on the same staging.<project>.pages.dev
           # URL, regardless of which branch's content was deployed.
-          command: |
-            pages project create iccf-leicester --production-branch=main || true
-            pages deploy docs --project-name=iccf-leicester --branch=staging
+          command: pages deploy docs --project-name=iccf-leicester --branch=staging
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
