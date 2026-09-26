@@ -1,0 +1,29 @@
+name: Deploy to Cloudflare Pages (Production)
+
+# Production only deploys when a GitHub Release is published.
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: iccf-leicester
+          directory: docs
+          # Marks this deployment as Production in Cloudflare Pages
+          # (must match the project's configured production branch name).
+          branch: main
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,32 @@
+name: Deploy to Cloudflare Pages (Staging)
+
+# Manual only. Run this from the Actions tab ("Run workflow") and pick
+# whichever branch you want to push to staging using GitHub's built-in
+# branch selector on that screen — whatever branch you choose gets checked
+# out and deployed here, always to the same staging URL.
+on:
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: staging
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: iccf-leicester
+          directory: docs
+          # A fixed label (not the actual source branch) so every manual
+          # staging run lands on the same staging.<project>.pages.dev URL,
+          # regardless of which branch's content was deployed.
+          branch: staging
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
