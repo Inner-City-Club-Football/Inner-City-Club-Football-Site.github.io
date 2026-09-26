@@ -19,14 +19,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: iccf-leicester
-          directory: docs
-          # A fixed label (not the actual source branch) so every manual
-          # staging run lands on the same staging.<project>.pages.dev URL,
-          # regardless of which branch's content was deployed.
-          branch: staging
+          # A fixed --branch label (not the actual source branch) so every
+          # manual staging run lands on the same staging.<project>.pages.dev
+          # URL, regardless of which branch's content was deployed.
+          command: pages deploy docs --project-name=iccf-leicester --branch=staging
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
