@@ -1,0 +1,17 @@
+{
+  "name": "iccf-leicester-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Playwright end-to-end tests for the ICCF Leicester static site",
+  "scripts": {
+    "bddgen": "bddgen",
+    "test": "bddgen && playwright test",
+    "test:ui": "bddgen && playwright test --ui",
+    "test:headed": "bddgen && playwright test --headed"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
+    "@playwright/test": "^1.48.0",
+    "playwright-bdd": "^9.2.1"
+  }
+}

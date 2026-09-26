@@ -429,7 +429,12 @@ main {
     padding-block: 0.75rem;
   }
 
-  .primary-nav {
+  .has-js .nav-toggle {
+    display: none;
+  }
+
+  .primary-nav,
+  .primary-nav[hidden] {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -711,6 +716,10 @@ main {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+}
+
+.contact-form[hidden] {
+  display: none;
 }
 
 .field {
