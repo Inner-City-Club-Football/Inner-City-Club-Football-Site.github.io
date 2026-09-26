@@ -17,13 +17,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: iccf-leicester
-          directory: docs
-          # Marks this deployment as Production in Cloudflare Pages
+          # --branch marks this deployment as Production in Cloudflare Pages
           # (must match the project's configured production branch name).
-          branch: main
+          command: pages deploy docs --project-name=iccf-leicester --branch=main
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
