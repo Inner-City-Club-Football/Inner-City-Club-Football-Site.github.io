@@ -1,9 +1,9 @@
 name: Deploy to Cloudflare Pages (Staging)
 
-# Manual only. Run this from the Actions tab ("Run workflow") and pick
-# whichever branch you want to push to staging using GitHub's built-in
-# branch selector on that screen — whatever branch you choose gets checked
-# out and deployed here, always to the same staging URL.
+# Manual only. Run this from the Actions tab ("Run workflow") and pick any
+# branch OR release tag using GitHub's built-in ref selector on that screen
+# (it has separate "Branches" and "Tags" tabs) — whatever you choose gets
+# checked out and deployed here, always to the same staging URL.
 on:
   workflow_dispatch: {}
 
@@ -18,15 +18,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+      # `pages deploy` can't interactively prompt to create a missing
+      # project in CI, so create it first if it doesn't exist yet.
+      # continue-on-error lets this step fail harmlessly once the project
+      # already exists (Wrangler errors on trying to create a duplicate).
+      - name: Ensure Cloudflare Pages project exists
+        continue-on-error: true
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: iccf-leicester
-          directory: docs
-          # A fixed label (not the actual source branch) so every manual
-          # staging run lands on the same staging.<project>.pages.dev URL,
-          # regardless of which branch's content was deployed.
-          branch: staging
+          command: pages project create iccf-leicester --production-branch=main
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # A fixed --branch label (not the actual source branch) so every
+          # manual staging run lands on the same staging.<project>.pages.dev
+          # URL, regardless of which branch's content was deployed.
+          command: pages deploy docs --project-name=iccf-leicester --branch=staging
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
