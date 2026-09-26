@@ -1,9 +1,9 @@
 name: Deploy to Cloudflare Pages (Staging)
 
-# Manual only. Run this from the Actions tab ("Run workflow") and pick
-# whichever branch you want to push to staging using GitHub's built-in
-# branch selector on that screen — whatever branch you choose gets checked
-# out and deployed here, always to the same staging URL.
+# Manual only. Run this from the Actions tab ("Run workflow") and pick any
+# branch OR release tag using GitHub's built-in ref selector on that screen
+# (it has separate "Branches" and "Tags" tabs) — whatever you choose gets
+# checked out and deployed here, always to the same staging URL.
 on:
   workflow_dispatch: {}
 
@@ -23,8 +23,13 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # `pages deploy` can't interactively prompt to create a missing
+          # project in CI, so create it first if it doesn't exist yet
+          # (the `|| true` makes this a no-op once the project exists).
           # A fixed --branch label (not the actual source branch) so every
           # manual staging run lands on the same staging.<project>.pages.dev
           # URL, regardless of which branch's content was deployed.
-          command: pages deploy docs --project-name=iccf-leicester --branch=staging
+          command: |
+            pages project create iccf-leicester --production-branch=main || true
+            pages deploy docs --project-name=iccf-leicester --branch=staging
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}

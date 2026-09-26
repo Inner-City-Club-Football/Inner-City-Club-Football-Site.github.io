@@ -21,7 +21,12 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # `pages deploy` can't interactively prompt to create a missing
+          # project in CI, so create it first if it doesn't exist yet
+          # (the `|| true` makes this a no-op once the project exists).
           # --branch marks this deployment as Production in Cloudflare Pages
           # (must match the project's configured production branch name).
-          command: pages deploy docs --project-name=iccf-leicester --branch=main
+          command: |
+            pages project create iccf-leicester --production-branch=main || true
+            pages deploy docs --project-name=iccf-leicester --branch=main
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
