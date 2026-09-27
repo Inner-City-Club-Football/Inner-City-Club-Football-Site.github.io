@@ -1,11 +1,16 @@
 name: Deploy to Cloudflare Pages (Staging)
 
-# Manual only. Run this from the Actions tab ("Run workflow") and pick any
-# branch OR release tag using GitHub's built-in ref selector on that screen
-# (it has separate "Branches" and "Tags" tabs) — whatever you choose gets
-# checked out and deployed here, always to the same staging URL.
+# Manual only. Run this from the Actions tab ("Run workflow"). "Use workflow
+# from" just picks which copy of this file to run (leave it on main) — the
+# "Branch, tag, or commit to deploy to staging" field below is what actually
+# gets checked out and deployed.
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Branch, tag, or commit to deploy to staging"
+        required: true
+        default: "main"
 
 jobs:
   deploy:
@@ -17,6 +22,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref }}
 
       # `pages deploy` can't interactively prompt to create a missing
       # project in CI, so create it first if it doesn't exist yet.
@@ -28,15 +35,15 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages project create iccf-leicester --production-branch=main
+          command: pages project create iccfleicester --production-branch=main
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          # A fixed --branch label (not the actual source branch) so every
-          # manual staging run lands on the same staging.<project>.pages.dev
-          # URL, regardless of which branch's content was deployed.
-          command: pages deploy docs --project-name=iccf-leicester --branch=staging
+          # A fixed --branch label (not the actual source ref) so every
+          # manual staging run lands on the same staging preview URL,
+          # regardless of which branch/tag/commit was deployed.
+          command: pages deploy docs --project-name=iccfleicester --branch=staging
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
