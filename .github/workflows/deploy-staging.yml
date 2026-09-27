@@ -25,6 +25,10 @@ jobs:
         with:
           ref: ${{ github.event.inputs.ref }}
 
+      # Staging is its own separate Cloudflare Pages project (not a preview
+      # branch of the production project), so its own production deploy
+      # lands on the clean iccfleicester-staging.pages.dev URL rather than
+      # a branch-prefixed preview subdomain.
       # `pages deploy` can't interactively prompt to create a missing
       # project in CI, so create it first if it doesn't exist yet.
       # continue-on-error lets this step fail harmlessly once the project
@@ -35,15 +39,16 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages project create iccfleicester --production-branch=main
+          command: pages project create iccfleicester-staging --production-branch=main
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          # A fixed --branch label (not the actual source ref) so every
-          # manual staging run lands on the same staging preview URL,
-          # regardless of which branch/tag/commit was deployed.
-          command: pages deploy docs --project-name=iccfleicester --branch=staging
+          # --branch=main here means "this project's own production branch",
+          # giving the clean iccfleicester-staging.pages.dev URL — it does
+          # NOT mean "only deploy the main git branch"; the actual source
+          # content deployed is whatever ref was checked out above.
+          command: pages deploy docs --project-name=iccfleicester-staging --branch=main
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
